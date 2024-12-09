@@ -557,7 +557,278 @@ video {
 }
 
 :root {
-  --primary: 17, 88%, 58%;
-  --secondary: 201, 97%, 25%;
-  --border: 200, 98%, 25%;
+  --primary: 17 88% 58%;
+  --secondary: 201 97% 25%;
+  --border: 200 98% 25%;
+  --white: 0 0% 100%;
+}
+
+.hero-section{
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+}
+
+.hero-section .video-player{
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom-right-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+  padding-top: 70%;
+}
+
+.hero-section .video-player::after{
+  position: absolute;
+  inset: 0px;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--secondary) / var(--tw-bg-opacity, 1));
+  content: var(--tw-content);
+  opacity: 0.8;
+}
+
+.hero-section .video-player div{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 20;
+  --tw-translate-x: -50%;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hero-section .video-player div > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
+
+@media (min-width: 1536px){
+  .hero-section .video-player div > :not([hidden]) ~ :not([hidden]){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(3rem * var(--tw-space-y-reverse));
+  }
+}
+
+.hero-section .video-player video{
+  position: absolute;
+  inset: 0px;
+  width: 100%;
+}
+
+.hero-section .video-player div h1{
+  font-family: Oswald, sans-serif;
+  font-size: 4.5rem;
+  line-height: 1;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: hsl(var(--white) / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 1536px){
+  .hero-section .video-player div h1{
+    font-size: 6rem;
+    line-height: 1;
+  }
+}
+
+.hero-section img{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -3rem;
+  height: auto;
+  max-width: 32rem;
+}
+
+@media (min-width: 1536px){
+  .hero-section img{
+    max-width: 42rem;
+  }
+}
+
+.btn{
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--primary) / var(--tw-bg-opacity, 1));
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: hsl(var(--white) / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 1536px){
+  .btn{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.regular-section{
+  width: 100%;
+}
+
+.regular-section > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(5rem * var(--tw-space-y-reverse));
+}
+
+@media (min-width: 1536px){
+  .regular-section > :not([hidden]) ~ :not([hidden]){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(6rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(6rem * var(--tw-space-y-reverse));
+  }
+}
+
+.section-title{
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 1536px){
+  .section-title{
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  right: -4rem;
+  top: -0.5rem;
+  max-height: 2.75rem;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  max-width: 2.75rem;
+  border-radius: 9999px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  right: -4rem;
+  top: -1.25rem;
+  max-height: 1.5rem;
+  min-height: 1.5rem;
+  min-width: 1.5rem;
+  max-width: 1.5rem;
+  border-radius: 9999px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--secondary) / var(--tw-border-opacity, 1));
+}
+
+.section-title span{
+  --tw-text-opacity: 1;
+  color: hsl(var(--primary) / var(--tw-text-opacity, 1));
+}
+
+.section-sub-title{
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 300;
+  --tw-text-opacity: 1;
+  color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 1536px){
+  .section-sub-title{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.categories-list-home{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+
+.categories-list-home li{
+  position: relative;
+  overflow: hidden;
+  padding-top: 90%;
+}
+
+.categories-list-home li::after {
+  content: "";
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(2, 82, 125, 1) 100%
+  );
+  position: absolute;
+  inset: 0px;
+  z-index: 20;
+  opacity: 0.6;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.categories-list-home li:hover::after {
+  content: "";
+  background: transparent;
+}
+
+.categories-list-home li a{
+  position: absolute;
+  inset: 0px;
+  z-index: 20;
+  height: 100%;
+  width: 100%;
+}
+
+.categories-list-home li a img{
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.categories-list-home li div{
+  position: absolute;
+  bottom: 0.5rem;
+  left: 1rem;
+  z-index: 50;
+}
+
+.categories-list-home li div h5{
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: hsl(var(--white) / var(--tw-text-opacity, 1));
 }
