@@ -927,6 +927,7 @@ video {
 }
 
 .qualities-box{
+  min-height: 18rem;
   max-width: 415px;
 }
 
@@ -967,4 +968,89 @@ video {
   margin-top: -4rem;
   height: 6rem;
   width: 7rem;
+}
+
+.home-prduct-list{
+  width: 100%;
+  overflow: hidden;
+}
+
+.home-prduct-list li{
+  display: inline-block;
+  padding-left: 3.5rem;
+}
+
+.home-prduct-list li:nth-child(1){
+  padding-left: 0px;
+}
+
+.home-prduct-list li a{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  letter-spacing: 5px;
+}
+
+.home-prduct-list li:nth-child(odd) a{
+  --tw-text-opacity: 1;
+  color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+}
+
+.home-prduct-list li:nth-child(even) a{
+  --tw-text-opacity: 1;
+  color: hsl(var(--primary) / var(--tw-text-opacity, 1));
+}
+
+.product-list-marquee{
+  display: flex;
+  align-items: stretch;
+}
+
+.product-list-marquee li{
+  position: relative;
+  min-height: 20rem;
+  min-width: 20rem;
+}
+
+.product-list-marquee li:nth-child(odd) .hexagon{
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--primary) / var(--tw-bg-opacity, 1));
+}
+
+.hexagon{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  clip-path: polygon(
+    93.56% 74.55%,
+    50.52% 100%,
+    6.96% 75.45%,
+    6.44% 25.45%,
+    49.48% 0%,
+    93.04% 24.55%,
+    93.56% 74.55%,
+    calc(93.04% - 0.86px) calc(24.55% - -0.51px),
+    calc(49.48% - -0.01px) calc(0% - -1px),
+    calc(6.44% - -0.87px) calc(25.45% - -0.49px),
+    calc(6.96% - -0.86px) calc(75.45% - 0.51px),
+    calc(50.52% - 0.01px) calc(100% - 1px),
+    calc(93.56% - 0.87px) calc(74.55% - 0.49px),
+    calc(93.04% - 0.86px) calc(24.55% - -0.51px)
+  );
+}
+
+.product-list-marquee li:nth-child(even) .hexagon{
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--secondary) / var(--tw-bg-opacity, 1));
+}
+
+.product-list-marquee li img{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  --tw-translate-x: -50%;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  -o-object-fit: contain;
+     object-fit: contain;
 }

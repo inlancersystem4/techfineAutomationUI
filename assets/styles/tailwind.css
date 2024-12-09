@@ -147,7 +147,7 @@
 }
 
 .qualities-box {
-  @apply p-7 space-y-6 max-w-[415px] rounded-xl;
+  @apply p-7 space-y-6 max-w-[415px] rounded-xl min-h-72;
   -webkit-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.5);
   -moz-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.5);
   box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.5);
@@ -163,4 +163,68 @@
 
 .qualities-box svg {
   @apply mx-auto -mt-16 w-28 h-24;
+}
+
+.home-prduct-list {
+  @apply w-full overflow-hidden;
+}
+
+.home-prduct-list li {
+  @apply inline-block pl-14;
+}
+
+.home-prduct-list li:nth-child(1) {
+  @apply pl-0;
+}
+
+.home-prduct-list li a {
+  @apply text-xl tracking-[5px];
+}
+
+.home-prduct-list li:nth-child(odd) a {
+  @apply text-secondary;
+}
+
+.home-prduct-list li:nth-child(even) a {
+  @apply text-primary;
+}
+
+.product-list-marquee {
+  @apply flex items-stretch;
+}
+
+.product-list-marquee li {
+  @apply relative min-w-80 min-h-80;
+}
+
+.product-list-marquee li:nth-child(odd) .hexagon {
+  @apply bg-primary;
+}
+
+.hexagon {
+  @apply w-full h-full relative overflow-hidden;
+  clip-path: polygon(
+    93.56% 74.55%,
+    50.52% 100%,
+    6.96% 75.45%,
+    6.44% 25.45%,
+    49.48% 0%,
+    93.04% 24.55%,
+    93.56% 74.55%,
+    calc(93.04% - 0.86px) calc(24.55% - -0.51px),
+    calc(49.48% - -0.01px) calc(0% - -1px),
+    calc(6.44% - -0.87px) calc(25.45% - -0.49px),
+    calc(6.96% - -0.86px) calc(75.45% - 0.51px),
+    calc(50.52% - 0.01px) calc(100% - 1px),
+    calc(93.56% - 0.87px) calc(74.55% - 0.49px),
+    calc(93.04% - 0.86px) calc(24.55% - -0.51px)
+  );
+}
+
+.product-list-marquee li:nth-child(even) .hexagon {
+  @apply bg-secondary;
+}
+
+.product-list-marquee li img {
+  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-contain;
 }
