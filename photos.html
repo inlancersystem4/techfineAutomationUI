@@ -1,0 +1,108 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Leading Jewelry Machine Manufactures & Suppliers | Techfine Automation"
+    />
+    <meta name="author" content="jeet kasundra" />
+    <meta
+      name="keywords"
+      content="automation, rajkot automation, rajkot cnc, rajkot jewellery machine, jewellery machine, rajkot jewelry, rajkot bangle machine, rajkot ball machine, bangle cnc, ball cnc, automation rajkot, rajkot auto, gujarat automation"
+    />
+    <title>Techfine Automation | Rajkot</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Added jQuery -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/scripts/tailwind.js"></script>
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <script src="./assets/scripts/main.js" defer></script>
+
+    <meta property="og:title" content="Techfine Automation | Rajkot" />
+    <meta
+      property="og:description"
+      content="Leading Jewelry Machine Manufactures & Suppliers | Techfine Automation"
+    />
+    <meta
+      property="og:image"
+      content="https://inlancer.in/public/inlancer-template/img/inlancer-meta-image.png"
+    />
+    <meta property="og:url" content="https://www.techfineautomation.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Techfine Automation | Rajkot" />
+    <meta name="twitter:title" content="Techfine Automation | Rajkot" />
+    <meta
+      name="twitter:description"
+      content="Leading Jewelry Machine Manufactures & Suppliers | Techfine Automation"
+    />
+    <meta
+      name="twitter:image"
+      content="https://inlancer.in/public/inlancer-template/img/inlancer-meta-image.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@xyz" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#02527D" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <h1>PHOTOS</h1>
+      <h5>Be alive with quality</h5>
+    </div>
+    <section class="regular-section container-secondary">
+      <ul class="photos-grid" id="photos-grid">
+        <!-- Images will be inserted dynamically here by jQuery -->
+      </ul>
+    </section>
+
+    <script type="module">
+      import { Fancybox } from "https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.esm.js";
+      Fancybox.bind('[data-fancybox="photo"]');
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        // Array of image sources
+        const images = [
+          "./assets/images/photos/img-1.png",
+          "./assets/images/photos/img-2.png",
+          "./assets/images/photos/img-3.png",
+          "./assets/images/photos/img-4.png",
+          "./assets/images/photos/img-5.png",
+          "./assets/images/photos/img-6.png",
+          "./assets/images/photos/img-7.png",
+          "./assets/images/photos/img-8.png",
+          "./assets/images/photos/img-9.png",
+          "./assets/images/photos/img-10.png",
+          "./assets/images/photos/img-11.png",
+          "./assets/images/photos/img-12.png",
+          "./assets/images/photos/img-13.png",
+          "./assets/images/photos/img-14.png",
+          "./assets/images/photos/img-15.png",
+          "./assets/images/photos/img-16.png",
+        ];
+
+        for (let i = 0; i < Math.min(images.length, 16); i++) {
+          let imgSrc = images[i];
+          let listItem = `
+            <li>
+              <a href="#" data-fancybox="photo" data-src="${imgSrc}">
+                <img src="${imgSrc}" alt="Techfine Automation photo ${i + 1}" />
+              </a>
+            </li>
+          `;
+          $("#photos-grid").append(listItem);
+        }
+
+        Fancybox.bind('[data-fancybox="photo"]');
+      });
+    </script>
+  </body>
+</html>

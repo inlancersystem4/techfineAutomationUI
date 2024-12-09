@@ -11,6 +11,10 @@
   --white: 0 0% 100%;
 }
 
+.container-secondary {
+  @apply w-full mx-auto px-2.5 2xl:max-w-[1490px] max-w-7xl;
+}
+
 .hero-section {
   @apply w-full grid grid-cols-2 items-center;
 }
@@ -227,4 +231,26 @@
 
 .product-list-marquee li img {
   @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-contain;
+}
+
+.page-heading {
+  @apply w-full text-center bg-secondary text-white py-7;
+}
+
+.page-heading h1 {
+  @apply font-sans-secondary text-[80px] font-bold;
+}
+
+.page-heading h5 {
+  @apply font-serif text-xl;
+}
+
+.photos-grid {
+  @apply grid grid-cols-4 2xl:gap-9 gap-6;
+}
+
+.photos-grid li {
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(2, 82, 125, 0.25);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(2, 82, 125, 0.25);
+  box-shadow: 0px 0px 10px 1px rgba(2, 82, 125, 0.25);
 }
