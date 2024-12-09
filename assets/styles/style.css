@@ -686,8 +686,13 @@ video {
 
 .regular-section > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
-  margin-top: calc(5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(5rem * var(--tw-space-y-reverse));
+  margin-top: calc(4rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(4rem * var(--tw-space-y-reverse));
+}
+
+.regular-section{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 @media (min-width: 1536px){
@@ -776,13 +781,13 @@ video {
   gap: 0.625rem;
 }
 
-.categories-list-home li{
+.categories-list-home li a{
   position: relative;
   overflow: hidden;
   padding-top: 90%;
 }
 
-.categories-list-home li::after {
+.categories-list-home li a::after {
   content: "";
   background: linear-gradient(
     180deg,
@@ -798,17 +803,10 @@ video {
   transition-duration: 150ms;
 }
 
-.categories-list-home li:hover::after {
+.categories-list-home li a:hover::after,
+.categories-list-home li a:focus::after {
   content: "";
   background: transparent;
-}
-
-.categories-list-home li a{
-  position: absolute;
-  inset: 0px;
-  z-index: 20;
-  height: 100%;
-  width: 100%;
 }
 
 .categories-list-home li a img{
@@ -825,10 +823,148 @@ video {
   z-index: 50;
 }
 
+.categories-list-home li a:hover div h5,
+.categories-list-home li a:focus div h5{
+  --tw-text-opacity: 1;
+  color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+}
+
 .categories-list-home li div h5{
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: hsl(var(--white) / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 1536px){
+  .categories-list-home li div h5{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.categories-list-home li div h6{
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: hsl(var(--primary) / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 1536px){
+  .categories-list-home li div h6{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+.certificates-list{
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.875rem;
+}
+
+@media (min-width: 1536px){
+  .certificates-list{
+    gap: 1.25rem;
+  }
+}
+
+.certificates-list li p{
+  margin-top: 0.75rem;
+  max-width: 13rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+
+.certificates-list li:nth-child(odd) p{
+  --tw-text-opacity: 1;
+  color: hsl(var(--primary) / var(--tw-text-opacity, 1));
+}
+
+.certificates-list li:nth-child(even) p{
+  --tw-text-opacity: 1;
+  color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+}
+
+.certificates-list li .certificates-img{
+  position: relative;
+  display: block;
+  padding-top: 16rem;
+}
+
+.certificates-list li .certificates-img img{
+  position: absolute;
+  inset: 0px;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.qualities-list{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6rem;
+}
+
+@media (min-width: 1536px){
+  .qualities-list{
+    gap: 9rem;
+  }
+}
+
+.qualities-list li:nth-child(odd) .qualities-box{
+  margin-left: auto;
+}
+
+.qualities-list li:nth-child(even) .qualities-box{
+  margin-right: auto;
+}
+
+.qualities-box{
+  max-width: 415px;
+}
+
+.qualities-box > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.qualities-box{
+  border-radius: 0.75rem;
+  padding: 1.75rem;
+  box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.5);
+}
+
+.qualities-box p{
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+}
+
+.qualities-box h6{
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: hsl(var(--primary) / var(--tw-text-opacity, 1));
+}
+
+.qualities-box svg{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -4rem;
+  height: 6rem;
+  width: 7rem;
 }
