@@ -1,5 +1,7 @@
 npx tailwindcss -i ./assets/styles/tailwind.css -o ./assets/styles/style.css --watch
 
+https://razorjack.net/quicksand/docs-and-demos
+
 
 
 <html lang="en">
@@ -59,3 +61,93 @@ npx tailwindcss -i ./assets/styles/tailwind.css -o ./assets/styles/style.css --w
     <h1 class="text-primary">hello</h1>
   </body>
 </html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Filter with Quicksand</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mixitup@3/dist/mixitup.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .filter-buttons {
+        margin-bottom: 20px;
+      }
+      .filter-buttons button {
+        padding: 10px 20px;
+        margin-right: 10px;
+        cursor: pointer;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+      }
+      .filter-buttons button.active {
+        background-color: #0056b3;
+      }
+      .products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .product-item {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 33%;
+        text-align: center;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>OUR PRODUCTS</h1>
+    <div class="filter-buttons">
+      <button data-filter="all">All</button>
+      <button data-filter=".machines">Machines</button>
+      <button data-filter=".jewellery">Jewellery</button>
+      <button data-filter=".devices">Devices</button>
+    </div>
+    <div class="products">
+      <div class="product-item machines">Machine 1</div>
+      <div class="product-item jewellery">Jewellery 1</div>
+      <div class="product-item devices">Device 1</div>
+      <div class="product-item machines">Machine 2</div>
+      <div class="product-item jewellery">Jewellery 2</div>
+      <div class="product-item devices">Device 2</div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mixer = mixitup(".products", {
+          selectors: {
+            target: ".product-item",
+          },
+          animation: {
+            duration: 500,
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
+
+ball_faceting_machine
+bangle_faceting_machine
+laser_marking_cutting_machine
+laser_soldering_machine
+jewellery_spm_machine

@@ -258,3 +258,54 @@
 .video-grid {
   @apply grid grid-cols-2 2xl:gap-36 gap-24;
 }
+
+.video-grid li {
+  @apply rounded-3xl overflow-hidden shadow-2xl;
+  -webkit-box-shadow: 0px 0px 10px 3px rgba(2, 82, 125, 0.6);
+  -moz-box-shadow: 0px 0px 10px 3px rgba(2, 82, 125, 0.6);
+  box-shadow: 0px 0px 10px 3px rgba(2, 82, 125, 0.6);
+}
+
+.video-grid li iframe {
+  @apply w-full h-80;
+}
+
+.filter-tab-list {
+  @apply w-full flex gap-8 pb-2.5 justify-between overflow-x-auto flex-nowrap;
+}
+
+.filter-tab-list button {
+  @apply text-secondary font-semibold text-base text-left flex-1 text-nowrap;
+}
+
+.filter-tab-list button.active,
+.filter-tab-list button.mixitup-control-active {
+  @apply text-primary;
+}
+
+.product-grid {
+  @apply grid grid-cols-3 gap-x-5 gap-y-24;
+}
+
+.product-grid .product-card {
+  @apply space-y-7;
+}
+
+.product-grid .product-card .img {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(2, 82, 125, 0.25);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(2, 82, 125, 0.25);
+  box-shadow: 0px 0px 10px 0px rgba(2, 82, 125, 0.25);
+  @apply relative pt-[86%] rounded-3xl flex items-center justify-center;
+}
+
+.product-grid .product-card .img img {
+  @apply absolute inset-0 w-full h-full object-contain;
+}
+
+.product-grid .product-card h6 {
+  @apply 2xl:text-2xl text-xl text-secondary text-center max-w-64 mx-auto mb-5;
+}
+
+.product-grid .product-card .product-btn {
+  @apply font-semibold text-base text-secondary border border-primary rounded-lg 2xl:py-3 py-2.5 px-8  block w-fit text-center mx-auto 2xl:px-11;
+}
