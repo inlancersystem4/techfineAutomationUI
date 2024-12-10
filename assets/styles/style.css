@@ -1361,3 +1361,98 @@ video {
   min-height: 11rem;
   resize: none;
 }
+
+footer{
+  width: 100%;
+  border-top-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
+  box-shadow: 0px 0px 27px 19px rgba(1, 82, 124, 0.15);
+}
+
+footer .container-secondary {
+  background-image: url("../images/footer-bg.png");
+  max-width: 64rem;
+}
+
+footer .container-secondary > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
+footer .container-secondary{
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+}
+
+.footer-col > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.footer-col h6{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+}
+
+.footer-col a{
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: hsl(var(--primary) / var(--tw-text-opacity, 1));
+}
+
+.footer-col .social-links{
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.footer-col .social-links a{
+  display: flex;
+  max-height: 2.75rem;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  max-width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--secondary) / var(--tw-border-opacity, 1));
+}
+
+.contact-link-list > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+}
+
+.contact-link-list li{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-link-list li div{
+  display: flex;
+  max-height: 2.25rem;
+  min-height: 2.25rem;
+  min-width: 2.25rem;
+  max-width: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--secondary) / var(--tw-border-opacity, 1));
+  --tw-text-opacity: 1;
+  color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+}

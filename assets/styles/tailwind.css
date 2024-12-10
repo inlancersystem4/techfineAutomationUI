@@ -350,3 +350,47 @@
 .contact-form textarea {
   @apply col-span-2 min-h-44 resize-none;
 }
+
+footer {
+  @apply w-full border-t-4 border-primary;
+  -webkit-box-shadow: 0px 0px 27px 19px rgba(1, 82, 124, 0.15);
+  -moz-box-shadow: 0px 0px 27px 19px rgba(1, 82, 124, 0.15);
+  box-shadow: 0px 0px 27px 19px rgba(1, 82, 124, 0.15);
+}
+
+footer .container-secondary {
+  background-image: url("../images/footer-bg.png");
+  @apply space-y-8 py-11 bg-contain bg-center bg-no-repeat max-w-5xl;
+}
+
+.footer-col {
+  @apply space-y-6;
+}
+
+.footer-col h6 {
+  @apply font-semibold text-xl text-secondary;
+}
+
+.footer-col a {
+  @apply text-primary font-medium;
+}
+
+.footer-col .social-links {
+  @apply flex items-stretch gap-4;
+}
+
+.footer-col .social-links a {
+  @apply border border-secondary flex items-center justify-center rounded-full min-w-11 min-h-11 max-w-11 max-h-11;
+}
+
+.contact-link-list {
+  @apply space-y-5;
+}
+
+.contact-link-list li {
+  @apply flex items-center gap-4;
+}
+
+.contact-link-list li div {
+  @apply border border-secondary rounded-full text-secondary flex items-center justify-center min-w-9 min-h-9 max-w-9 max-h-9;
+}
