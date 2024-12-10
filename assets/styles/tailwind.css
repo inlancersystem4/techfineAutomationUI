@@ -309,3 +309,7 @@
 .product-grid .product-card .product-btn {
   @apply font-semibold text-base text-secondary border border-primary rounded-lg 2xl:py-3 py-2.5 px-8  block w-fit text-center mx-auto 2xl:px-11;
 }
+
+.terms-list p {
+  @apply text-secondary text-base text-center;
+}
