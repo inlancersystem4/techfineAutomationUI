@@ -313,3 +313,40 @@
 .terms-list p {
   @apply text-secondary text-base text-center;
 }
+
+.contact-info-box {
+  @apply rounded-xl p-4 space-y-7;
+  -webkit-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.3);
+  -moz-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.3);
+  box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.3);
+}
+
+.contact-info-box h5 {
+  @apply font-semibold text-primary text-2xl text-center;
+}
+
+.contact-info-box a,
+.contact-info-box p {
+  @apply text-center text-secondary block text-base;
+}
+
+.contact-info-box .icon {
+  @apply bg-primary text-white flex items-center justify-center -mt-12 rounded-full mx-auto 2xl:min-w-[90px] 2xl:min-h-[90px] 2xl:max-w-[90px] 2xl:max-h-[90px] min-w-[72px] max-w-[72px] min-h-[72px] max-h-[72px];
+}
+
+.contact-form {
+  @apply w-full max-w-4xl mx-auto grid grid-cols-2 gap-5;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  @apply bg-white border border-primary rounded-xl py-8 px-10 placeholder:text-secondary placeholder:opacity-30;
+  -webkit-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.1);
+  -moz-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.1);
+  box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.1);
+}
+
+.contact-form textarea {
+  @apply col-span-2 min-h-44 resize-none;
+}
