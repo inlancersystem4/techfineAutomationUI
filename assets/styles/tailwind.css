@@ -271,7 +271,7 @@
 }
 
 .filter-tab-list {
-  @apply w-full flex gap-8 pb-2.5 justify-between overflow-x-auto flex-nowrap;
+  @apply w-full flex gap-8 pb-2.5 justify-evenly overflow-x-auto flex-nowrap;
 }
 
 .filter-tab-list button {

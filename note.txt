@@ -151,3 +151,9 @@ bangle_faceting_machine
 laser_marking_cutting_machine
 laser_soldering_machine
 jewellery_spm_machine
+
+
+
+laser_machine_products
+ball_machine_products
+bangle_machine_products
