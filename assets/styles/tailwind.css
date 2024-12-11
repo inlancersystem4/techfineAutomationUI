@@ -551,3 +551,32 @@ header nav .nav-list button::after {
 header nav .nav-list li:nth-last-child(1) a {
   @apply !text-base;
 }
+
+.choose-option-list {
+  @apply w-full max-w-5xl mx-auto bg-no-repeat bg-center overflow-hidden;
+  background-image: url("../images/why-bg.png");
+}
+
+.choose-option-list li {
+  @apply flex items-center  gap-12 px-14 py-16 relative border-t border-primary overflow-hidden;
+}
+
+.choose-option-list li:nth-child(even) {
+  @apply flex-row-reverse border-r border-primary rounded-r-full;
+}
+
+.choose-option-list li:nth-child(odd) {
+  @apply border-l border-secondary rounded-l-full;
+}
+
+.choose-option-list li:nth-last-child(1){
+  @apply border-b border-primary
+}
+
+.choose-option-list li h5 {
+  @apply font-bold text-primary 2xl:text-4xl text-3xl;
+}
+
+.choose-option-list li p {
+  @apply text-secondary text-lg 2xl:text-xl max-w-[620px];
+}
