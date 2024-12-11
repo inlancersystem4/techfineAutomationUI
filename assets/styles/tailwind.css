@@ -201,6 +201,10 @@
   @apply relative min-w-80 min-h-80;
 }
 
+.product-list-marquee.about li {
+  @apply min-w-52 min-h-52;
+}
+
 .product-list-marquee li:nth-child(odd) .hexagon {
   @apply bg-primary;
 }
@@ -231,6 +235,10 @@
 
 .product-list-marquee li img {
   @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-contain;
+}
+
+.product-list-marquee.about li img {
+  @apply w-16 h-auto;
 }
 
 .page-heading {
@@ -569,8 +577,8 @@ header nav .nav-list li:nth-last-child(1) a {
   @apply border-l border-secondary rounded-l-full;
 }
 
-.choose-option-list li:nth-last-child(1){
-  @apply border-b border-primary
+.choose-option-list li:nth-last-child(1) {
+  @apply border-b border-primary;
 }
 
 .choose-option-list li h5 {
