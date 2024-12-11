@@ -81,6 +81,26 @@
       </div>
     </section>
     <section class="regular-section">
+      <div class="container-secondary">
+        <div class="home-about-section">
+          <div class="max-w-xl 2xl:space-y-14 space-y-10">
+            <h4 class="section-title !text-left !ml-0">
+              <span>About</span>Techfine
+            </h4>
+            <p class="text-base text-secondary">
+              Techfine Automation is a complete package manufacturing company
+              comprises of special purpose machine, CNC engraving machine for
+              Gold, Automatic Faceting machine for Gold and Imitation product,
+              Small VMC machine, CNC Turning Machine, Pneumatic Dott Pin Marking
+              Machine.
+            </p>
+            <a href="#" class="btn">Know more about us</a>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+    <section class="regular-section">
       <div>
         <h6 class="section-sub-title">OUR</h6>
         <h4 class="section-title"><span>Products</span> Categories</h4>
@@ -806,7 +826,7 @@
         <h6 class="section-sub-title">OUR</h6>
         <h4 class="section-title"><span>Products</span></h4>
       </div>
-      <ul class="home-prduct-list">
+      <marquee behavior="scroll" direction="left" class="home-prduct-list">
         <li>
           <a href="#">Laser Marking Machine</a>
         </li>
@@ -816,8 +836,8 @@
         <li>
           <a href="#">Ball Machine</a>
         </li>
-      </ul>
-      <ul class="product-list-marquee">
+      </marquee>
+      <ul class="product-list-marquee" id="marquee">
         <li>
           <a
             href="#"
@@ -875,6 +895,17 @@
 
       Fancybox.bind('[data-fancybox="certificate"]');
       Fancybox.bind('[data-fancybox="product"]');
+    </script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/dynamic-marquee@2"
+    ></script>
+    <script type="text/javascript">
+      const Marquee = dynamicMarquee.Marquee;
+      const marquee = new Marquee(document.getElementById("marquee"), {
+        rate: 20,
+        direction: "left",
+      });
     </script>
   </body>
 </html>

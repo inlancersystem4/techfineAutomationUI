@@ -394,3 +394,101 @@ footer .container-secondary {
 .contact-link-list li div {
   @apply border border-secondary rounded-full text-secondary flex items-center justify-center min-w-9 min-h-9 max-w-9 max-h-9;
 }
+
+.home-about-section {
+  @apply flex items-start gap-4 bg-contain bg-center bg-no-repeat;
+  background-image: url("../images/footer-bg.png");
+}
+
+.breadcrumb-list {
+  @apply flex items-center;
+}
+
+.breadcrumb-list li {
+  @apply 2xl:text-xl text-lg text-primary;
+}
+
+.breadcrumb-list li::after {
+  content: ">";
+  @apply mr-2;
+}
+
+.breadcrumb-list li:nth-last-child(1) {
+  @apply text-secondary;
+}
+
+.breadcrumb-list li:nth-last-child(1)::after {
+  content: "";
+  @apply mr-0;
+}
+
+.product-detail-grid {
+  @apply grid grid-cols-3 2xl:gap-24 gap-20;
+}
+
+.product-detail-grid .product-image {
+  @apply w-full relative pt-[120%] rounded-2xl overflow-hidden block;
+  -moz-box-shadow: 0px 0px 10px 0px rgba(2, 82, 125, 0.25);
+  box-shadow: 0px 0px 10px 0px rgba(2, 82, 125, 0.25);
+}
+
+.product-detail-grid .product-image::after {
+  content: "";
+  background-image: url("../images/logo.png");
+  @apply absolute inset-0 w-full h-full bg-auto opacity-25 bg-no-repeat bg-center;
+}
+
+.product-detail-grid .product-image img {
+  @apply absolute inset-0 w-full h-full;
+}
+
+.product-video {
+  @apply w-full rounded-2xl overflow-hidden;
+  -moz-box-shadow: 0px 0px 10px 0px rgba(2, 82, 125, 0.25);
+  box-shadow: 0px 0px 10px 0px rgba(2, 82, 125, 0.25);
+}
+
+.product-video iframe {
+  @apply h-64;
+}
+
+.product-detail-grid .application-list {
+  @apply grid grid-cols-2 gap-3;
+}
+
+.product-detail-grid .application-list li {
+  @apply text-secondary text-lg font-medium relative pl-7;
+}
+
+.product-detail-grid .application-list li::before {
+  content: "";
+  background-image: url("../images/arrow.png");
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+  @apply absolute left-0 top-1/2 -translate-y-1/2;
+}
+
+.product-detail-grid .custom-table {
+  @apply border border-primary rounded-2xl overflow-hidden w-full divide-y divide-primary;
+}
+
+.product-detail-grid .custom-table .row {
+  @apply flex items-stretch divide-x divide-primary;
+}
+
+.product-detail-grid .custom-table .row:nth-child(1) {
+  @apply bg-primary  divide-white;
+}
+
+.product-detail-grid .custom-table .row:nth-child(1) div {
+  @apply !text-white;
+}
+
+.product-detail-grid .custom-table .row div {
+  @apply flex-1 2xl:py-5 py-3.5 px-3.5 text-primary;
+}
+
+.product-detail-grid .custom-table .row div:nth-child(1) {
+  @apply text-secondary font-semibold;
+}
