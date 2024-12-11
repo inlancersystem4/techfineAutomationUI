@@ -486,9 +486,68 @@ footer .container-secondary {
 }
 
 .product-detail-grid .custom-table .row div {
-  @apply flex-1 2xl:py-5 py-3.5 px-3.5 text-primary;
+  @apply w-[50%] 2xl:py-5 py-3.5 px-3.5 text-primary;
+}
+
+.product-detail-grid .custom-table .row div:nth-child(3) {
+  @apply w-[25%] flex-auto;
+}
+
+.product-detail-grid .custom-table .row div:nth-child(2) {
+  @apply w-[25%] flex-auto;
 }
 
 .product-detail-grid .custom-table .row div:nth-child(1) {
   @apply text-secondary font-semibold;
+}
+
+.quality-box {
+  @apply border border-secondary rounded-3xl overflow-hidden;
+}
+
+.quality-box p {
+  @apply py-8 px-5 text-center text-secondary;
+}
+
+.quality-box div {
+  @apply bg-primary pb-2.5 pt-7;
+}
+
+.quality-box div h6 {
+  @apply font-semibold text-white text-lg text-center;
+}
+
+header {
+  @apply 2xl:py-8 py-6;
+}
+
+header nav {
+  @apply flex items-center justify-between gap-4 w-full list-none;
+}
+
+header nav li:nth-last-child(1) a {
+  @apply text-lg text-nowrap;
+}
+
+header nav .nav-list {
+  @apply flex items-center gap-4 flex-1 flex-wrap;
+}
+
+header nav .nav-list a,
+header nav .nav-list button {
+  @apply font-semibold text-base text-secondary relative;
+}
+
+header nav .nav-list button {
+  @apply pr-5;
+}
+
+header nav .nav-list button::after {
+  content: "";
+  background-image: url("../images/dropdown-arrow.png");
+  @apply w-3 h-3 bg-contain absolute right-0 top-1/2 -translate-y-1/2;
+}
+
+header nav .nav-list li:nth-last-child(1) a {
+  @apply !text-base;
 }
