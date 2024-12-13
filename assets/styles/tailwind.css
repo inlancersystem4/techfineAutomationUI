@@ -40,25 +40,25 @@
 }
 
 .btn {
-  @apply bg-primary text-white font-semibold text-xl 2xl:text-2xl w-fit block 2xl:py-3 2xl:px-8 py-2.5 px-6 rounded-full;
+  @apply bg-primary text-white font-semibold sm:text-xl text-lg 2xl:text-2xl w-fit block 2xl:py-3 2xl:px-8 sm:py-2.5 py-2 sm:px-6 px-4 rounded-full;
 }
 
 .regular-section {
-  @apply w-full 2xl:space-y-24 space-y-16 md:py-12 py-9;
+  @apply w-full 2xl:space-y-24 sm:space-y-16 space-y-8 md:py-12 py-9;
 }
 
 .section-title {
-  @apply font-bold text-center 2xl:text-5xl text-4xl text-secondary relative w-fit mx-auto;
+  @apply font-bold text-center 2xl:text-5xl md:text-4xl text-2xl text-secondary relative w-fit mx-auto;
 }
 
 .section-title::after {
   content: "";
-  @apply absolute -right-16 -top-2 min-w-11 min-h-11 max-w-11 max-h-11 border border-primary rounded-full;
+  @apply absolute md:-right-16 -right-9 -top-2 md:min-w-11 md:min-h-11 md:max-w-11 md:max-h-11 min-w-8 min-h-8 max-w-8 max-h-8 border border-primary rounded-full;
 }
 
 .section-title::before {
   content: "";
-  @apply absolute -right-16 -top-5 min-w-6 min-h-6 max-w-6 max-h-6 border border-secondary rounded-full;
+  @apply absolute md:-right-16 -right-9 md:-top-5 -top-3 md:min-w-6 md:min-h-6 md:max-w-6 md:max-h-6 min-w-3.5 min-h-3.5 max-w-3.5 max-h-3.5 border border-secondary rounded-full;
 }
 
 .section-title span {
@@ -66,7 +66,7 @@
 }
 
 .section-sub-title {
-  @apply text-xl 2xl:text-2xl font-light text-secondary text-center;
+  @apply md:text-xl text-sm 2xl:text-2xl font-light text-secondary text-center;
 }
 
 .categories-list-home {
@@ -292,11 +292,11 @@
 }
 
 .product-grid {
-  @apply grid grid-cols-3 gap-x-5 gap-y-24;
+  @apply grid md:grid-cols-3 grid-cols-1 gap-x-5 gap-y-24;
 }
 
 .product-grid .product-card {
-  @apply space-y-7;
+  @apply sm:space-y-7 space-y-4;
 }
 
 .product-grid .product-card .img {
@@ -311,11 +311,11 @@
 }
 
 .product-grid .product-card h6 {
-  @apply 2xl:text-2xl text-xl text-secondary text-center max-w-64 mx-auto mb-5;
+  @apply 2xl:text-2xl sm:text-xl text-lg text-secondary text-center max-w-64 mx-auto sm:mb-5 mb-3;
 }
 
 .product-grid .product-card .product-btn {
-  @apply font-semibold text-base text-secondary border border-primary rounded-lg 2xl:py-3 py-2.5 px-8  block w-fit text-center mx-auto 2xl:px-11;
+  @apply font-semibold text-base text-secondary border border-primary rounded-lg 2xl:py-3 sm:py-2.5 py-2 sm:px-8 px-5  block w-fit text-center mx-auto 2xl:px-11;
 }
 
 .terms-list p {
@@ -323,40 +323,40 @@
 }
 
 .contact-info-box {
-  @apply rounded-xl p-4 space-y-7;
+  @apply rounded-xl p-4 sm:space-y-7 space-y-3.5;
   -webkit-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.3);
   -moz-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.3);
   box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.3);
 }
 
 .contact-info-box h5 {
-  @apply font-semibold text-primary text-2xl text-center;
+  @apply font-semibold text-primary sm:text-2xl text-xl text-center;
 }
 
 .contact-info-box a,
 .contact-info-box p {
-  @apply text-center text-secondary block text-base;
+  @apply text-center text-secondary block sm:text-base text-sm;
 }
 
 .contact-info-box .icon {
-  @apply bg-primary text-white flex items-center justify-center -mt-12 rounded-full mx-auto 2xl:min-w-[90px] 2xl:min-h-[90px] 2xl:max-w-[90px] 2xl:max-h-[90px] min-w-[72px] max-w-[72px] min-h-[72px] max-h-[72px];
+  @apply bg-primary text-white flex items-center justify-center md:-mt-12 -mt-9 rounded-full mx-auto 2xl:min-w-[90px] 2xl:min-h-[90px] 2xl:max-w-[90px] 2xl:max-h-[90px] md:min-w-[72px] md:max-w-[72px] md:min-h-[72px] md:max-h-[72px] min-w-14 min-h-14 max-w-14 max-h-14;
 }
 
 .contact-form {
-  @apply w-full max-w-4xl mx-auto grid grid-cols-2 gap-5;
+  @apply w-full max-w-4xl mx-auto grid md:grid-cols-2 grid-cols-1 gap-5 px-4;
 }
 
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
-  @apply bg-white border border-primary rounded-xl py-8 px-10 placeholder:text-secondary placeholder:opacity-30;
+  @apply bg-white border border-primary rounded-xl md:py-8 py-3 md:px-10 px-3.5 placeholder:text-secondary placeholder:opacity-30;
   -webkit-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.1);
   -moz-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.1);
   box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.1);
 }
 
 .contact-form textarea {
-  @apply col-span-2 min-h-44 resize-none;
+  @apply md:col-span-2 col-auto min-h-44 resize-none;
 }
 
 footer {
