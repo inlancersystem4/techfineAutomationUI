@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  scroll-behavior: smooth;
+}
+
 :root {
   --primary: 17 88% 58%;
   --secondary: 201 97% 25%;
@@ -16,15 +20,15 @@
 }
 
 .hero-section {
-  @apply w-full grid grid-cols-2 items-center;
+  @apply w-full grid md:grid-cols-2 grid-cols-1 gap-6 md:gap-0 items-center;
 }
 
 .hero-section .video-player {
-  @apply w-full rounded-b-full relative pt-[70%] overflow-hidden flex items-center justify-center after:bg-secondary after:opacity-80 after:absolute after:inset-0;
+  @apply w-full md:rounded-b-full relative pt-[70%] overflow-hidden flex items-center justify-center after:bg-secondary after:opacity-80 after:absolute after:inset-0;
 }
 
 .hero-section .video-player div {
-  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 2xl:space-y-12 space-y-10;
+  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 2xl:space-y-12 md:space-y-10 space-y-6;
 }
 
 .hero-section .video-player video {
@@ -32,15 +36,15 @@
 }
 
 .hero-section .video-player div h1 {
-  @apply font-bold 2xl:text-8xl text-7xl text-white font-sans-secondary;
+  @apply font-bold 2xl:text-8xl md:text-7xl text-6xl text-white font-sans-secondary;
 }
 
 .hero-section img {
-  @apply h-auto max-w-lg 2xl:max-w-2xl mx-auto -mt-12;
+  @apply h-auto md:max-w-lg 2xl:max-w-2xl mx-auto md:-mt-12;
 }
 
 .btn {
-  @apply bg-primary text-white font-semibold sm:text-xl text-lg 2xl:text-2xl w-fit block 2xl:py-3 2xl:px-8 sm:py-2.5 py-2 sm:px-6 px-4 rounded-full;
+  @apply bg-primary text-white sm:font-semibold sm:text-xl text-lg 2xl:text-2xl w-fit block 2xl:py-3 2xl:px-8 sm:py-2.5 py-2 sm:px-6 px-4 rounded-full;
 }
 
 .regular-section {
@@ -70,11 +74,11 @@
 }
 
 .categories-list-home {
-  @apply gap-2.5 grid grid-cols-3;
+  @apply gap-2.5 grid md:grid-cols-3;
 }
 
 .categories-list-home li a {
-  @apply relative pt-[90%] overflow-hidden;
+  @apply relative md:pt-[90%] pt-[6%] overflow-hidden;
 }
 
 .categories-list-home li a::after {
@@ -139,19 +143,19 @@
 }
 
 .qualities-list {
-  @apply grid grid-cols-2 2xl:gap-36 gap-24;
+  @apply grid md:grid-cols-2 grid-cols-1 px-4 md:px-0 2xl:gap-36 md:gap-24 sm:gap-16 gap-12;
 }
 
 .qualities-list li:nth-child(odd) .qualities-box {
-  @apply ml-auto;
+  @apply md:ml-auto max-[768px]:mx-auto;
 }
 
 .qualities-list li:nth-child(even) .qualities-box {
-  @apply mr-auto;
+  @apply md:mr-auto max-[768px]:mx-auto;
 }
 
 .qualities-box {
-  @apply p-7 space-y-6 max-w-[415px] rounded-xl min-h-72;
+  @apply sm:p-7 p-4 sm:space-y-6 space-y-2.5 max-w-[415px] rounded-xl sm:min-h-72 min-h-48;
   -webkit-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.5);
   -moz-box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.5);
   box-shadow: 0px 0px 45.8px -9px rgba(2, 82, 125, 0.5);
@@ -162,11 +166,11 @@
 }
 
 .qualities-box h6 {
-  @apply text-primary font-semibold text-3xl text-center mt-4;
+  @apply text-primary font-semibold sm:text-3xl text-xl text-center mt-4;
 }
 
 .qualities-box svg {
-  @apply mx-auto -mt-16 w-28 h-24;
+  @apply mx-auto sm:-mt-16 -mt-10 sm:w-28 w-20 sm:h-24 h-auto;
 }
 
 .home-prduct-list {
@@ -194,15 +198,15 @@
 }
 
 .product-list-marquee {
-  @apply flex items-stretch;
+  @apply flex items-stretch flex-nowrap overflow-x-auto pb-1.5;
 }
 
 .product-list-marquee li {
-  @apply relative min-w-80 min-h-80;
+  @apply relative md:min-w-80 min-w-52 md:min-h-80 min-h-52  list-none;
 }
 
 .product-list-marquee.about li {
-  @apply min-w-52 min-h-52;
+  @apply md:min-w-52 md:min-h-52 min-w-32 min-h-32;
 }
 
 .product-list-marquee li:nth-child(odd) .hexagon {
@@ -234,11 +238,11 @@
 }
 
 .product-list-marquee li img {
-  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-contain;
+  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-contain w-16 md:w-auto;
 }
 
 .product-list-marquee.about li img {
-  @apply w-16 h-auto;
+  @apply md:w-16 w-10 h-auto;
 }
 
 .page-heading {
@@ -404,7 +408,7 @@ footer .container-secondary {
 }
 
 .home-about-section {
-  @apply flex items-start gap-4 bg-contain bg-center bg-no-repeat;
+  @apply flex items-start flex-col lg:flex-row lg:gap-4 gap-8 bg-contain bg-center bg-no-repeat;
   background-image: url("../images/footer-bg.png");
 }
 
@@ -561,20 +565,20 @@ header nav .nav-list li:nth-last-child(1) a {
 }
 
 .choose-option-list {
-  @apply w-full max-w-5xl mx-auto bg-no-repeat bg-center overflow-hidden;
+  @apply w-full max-w-5xl px-4 md:px-0 mx-auto bg-no-repeat bg-center overflow-hidden;
   background-image: url("../images/why-bg.png");
 }
 
 .choose-option-list li {
-  @apply flex items-center  gap-12 px-14 py-16 relative border-t border-primary overflow-hidden;
+  @apply flex items-center flex-col  md:gap-12 gap-6 md:px-14 px-6 md:py-16 py-8 relative border-t border-primary overflow-hidden;
 }
 
 .choose-option-list li:nth-child(even) {
-  @apply flex-row-reverse border-r border-primary rounded-r-full;
+  @apply md:flex-row-reverse flex-col border-r border-primary md:rounded-r-full;
 }
 
 .choose-option-list li:nth-child(odd) {
-  @apply border-l border-secondary rounded-l-full;
+  @apply border-l border-secondary md:rounded-l-full;
 }
 
 .choose-option-list li:nth-last-child(1) {
@@ -582,9 +586,9 @@ header nav .nav-list li:nth-last-child(1) a {
 }
 
 .choose-option-list li h5 {
-  @apply font-bold text-primary 2xl:text-4xl text-3xl;
+  @apply font-bold text-primary 2xl:text-4xl md:text-3xl text-xl;
 }
 
 .choose-option-list li p {
-  @apply text-secondary text-lg 2xl:text-xl max-w-[620px];
+  @apply text-secondary md:text-lg text-base 2xl:text-xl max-w-[620px];
 }
