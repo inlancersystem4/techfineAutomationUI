@@ -706,8 +706,15 @@ video {
 }
 
 .regular-section{
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+}
+
+@media (min-width: 768px){
+  .regular-section{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
 }
 
 @media (min-width: 1536px){
@@ -876,9 +883,16 @@ video {
 
 .certificates-list{
   display: flex;
+  flex-wrap: wrap;
   align-items: stretch;
   justify-content: center;
   gap: 0.875rem;
+}
+
+@media (min-width: 768px){
+  .certificates-list{
+    flex-wrap: nowrap;
+  }
 }
 
 @media (min-width: 1536px){
@@ -1084,29 +1098,69 @@ video {
   width: 100%;
   --tw-bg-opacity: 1;
   background-color: hsl(var(--secondary) / var(--tw-bg-opacity, 1));
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   text-align: center;
   --tw-text-opacity: 1;
   color: hsl(var(--white) / var(--tw-text-opacity, 1));
 }
 
+@media (min-width: 640px){
+  .page-heading{
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
 .page-heading h1{
   font-family: Oswald, sans-serif;
-  font-size: 80px;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
   font-weight: 700;
+}
+
+@media (min-width: 640px){
+  .page-heading h1{
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 768px){
+  .page-heading h1{
+    font-size: 80px;
+  }
 }
 
 .page-heading h5{
   font-family: Ovo, serif;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+@media (min-width: 768px){
+  .page-heading h5{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 
 .photos-grid{
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 768px){
+  .photos-grid{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px){
+  .photos-grid{
+    gap: 1.5rem;
+  }
 }
 
 @media (min-width: 1536px){
@@ -1121,8 +1175,21 @@ video {
 
 .video-grid{
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px){
+  .video-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem;
+  }
+}
+
+@media (min-width: 1024px){
+  .video-grid{
+    gap: 6rem;
+  }
 }
 
 @media (min-width: 1536px){
@@ -1141,8 +1208,14 @@ video {
 }
 
 .video-grid li iframe{
-  height: 20rem;
+  height: 13rem;
   width: 100%;
+}
+
+@media (min-width: 640px){
+  .video-grid li iframe{
+    height: 20rem;
+  }
 }
 
 .filter-tab-list{
@@ -1257,10 +1330,17 @@ video {
 
 .terms-list p{
   text-align: center;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   --tw-text-opacity: 1;
   color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 640px){
+  .terms-list p{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }
 
 .contact-info-box > :not([hidden]) ~ :not([hidden]){
@@ -1395,22 +1475,44 @@ footer .container-secondary{
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 640px){
+  footer .container-secondary{
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
 }
 
 .footer-col > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
-  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+@media (min-width: 640px){
+  .footer-col > :not([hidden]) ~ :not([hidden]){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+  }
 }
 
 .footer-col h6{
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 600;
   --tw-text-opacity: 1;
   color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 640px){
+  .footer-col h6{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 
 .footer-col a{
@@ -1441,8 +1543,16 @@ footer .container-secondary{
 
 .contact-link-list > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
-  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+  margin-top: calc(0.875rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.875rem * var(--tw-space-y-reverse));
+}
+
+@media (min-width: 640px){
+  .contact-link-list > :not([hidden]) ~ :not([hidden]){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+  }
 }
 
 .contact-link-list li{
@@ -1479,6 +1589,7 @@ footer .container-secondary{
 
 .breadcrumb-list{
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -1513,8 +1624,26 @@ footer .container-secondary{
 
 .product-detail-grid{
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 5rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px){
+  .product-detail-grid{
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 768px){
+  .product-detail-grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px){
+  .product-detail-grid{
+    gap: 5rem;
+  }
 }
 
 @media (min-width: 1536px){
@@ -1566,8 +1695,15 @@ footer .container-secondary{
 
 .product-detail-grid .application-list{
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px){
+  .product-detail-grid .application-list{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
 }
 
 .product-detail-grid .application-list li{

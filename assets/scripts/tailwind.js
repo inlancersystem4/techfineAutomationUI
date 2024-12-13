@@ -2,9 +2,10 @@ tailwind.config = {
   theme: {
     container: {
       center: true,
+      padding: "1rem",
       screens: {
-        "2xl": "1720px",
-        xl: "1280px",
+        "2xl": "1736px",
+        xl: "1296px",
       },
     },
     fontFamily: {
