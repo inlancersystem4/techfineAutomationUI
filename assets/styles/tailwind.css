@@ -530,15 +530,36 @@ footer .container-secondary {
 }
 
 header {
-  @apply 2xl:py-8 py-6;
+  @apply 2xl:py-8 sm:py-6 py-4 relative;
 }
 
 header nav {
   @apply flex items-center justify-between gap-4 w-full list-none;
 }
 
+header nav li:nth-child(1) img {
+  @apply max-w-40 lg:max-w-52;
+}
+
 header nav li:nth-last-child(1) a {
   @apply text-lg text-nowrap;
+}
+
+header nav li:nth-last-child(2) ul {
+  @apply lg:flex hidden;
+}
+
+header nav li .mobile-nav.nav-list {
+  @apply bg-white left-0 top-full !flex flex-col w-full gap-0 divide-y divide-primary border-y border-primary z-50 absolute lg:flex;
+}
+
+header nav li .mobile-nav.nav-list li {
+  @apply w-full px-2;
+}
+
+header nav li .mobile-nav.nav-list li a,
+header nav li .mobile-nav.nav-list li button {
+  @apply py-2.5 block;
 }
 
 header nav .nav-list {
@@ -570,7 +591,7 @@ header nav .nav-list li:nth-last-child(1) a {
 }
 
 .choose-option-list li {
-  @apply flex items-center flex-col  md:gap-12 gap-6 md:px-14 px-6 md:py-16 py-8 relative border-t border-primary overflow-hidden;
+  @apply flex items-center  md:gap-12 gap-6 md:px-14 px-6 md:py-16 py-8 relative border-t border-primary overflow-hidden;
 }
 
 .choose-option-list li:nth-child(even) {
@@ -578,7 +599,7 @@ header nav .nav-list li:nth-last-child(1) a {
 }
 
 .choose-option-list li:nth-child(odd) {
-  @apply border-l border-secondary md:rounded-l-full;
+  @apply border-l border-secondary md:rounded-l-full flex-col md:flex-row;
 }
 
 .choose-option-list li:nth-last-child(1) {

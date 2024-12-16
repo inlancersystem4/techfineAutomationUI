@@ -85,7 +85,21 @@
           </ul>
         </li>
         <li>
-          <a href="#" class="btn">CONTACT US</a>
+          <a href="#" class="btn lg:!flex !hidden">CONTACT US</a>
+          <button href="#" onclick="handleMobileNav()" class="lg:hidden flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                fill-rule="evenodd"
+                d="M3 16h18v2H3zm0-5h18v2H3zm0-5h18v2H3z"
+              />
+            </svg>
+          </button>
         </li>
       </nav>
     </header>
@@ -250,6 +264,13 @@
       import { Fancybox } from "https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.esm.js";
 
       Fancybox.bind('[data-fancybox="certificate"]');
+    </script>
+    <script>
+      function handleMobileNav() {
+        const mobileNav = document.querySelector(".nav-list");
+
+        mobileNav.classList.toggle("mobile-nav");
+      }
     </script>
   </body>
 </html>
