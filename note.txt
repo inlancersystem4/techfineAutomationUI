@@ -3083,3 +3083,708 @@ bangle_machine_products
     </script>
   </body>
 </html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Border Animation on Scroll</title>
+    <style>
+      :root {
+        --primary: 17 88% 58%;
+        --secondary: 201 97% 25%;
+        --border: 200 98% 25%;
+        --white: 0 0% 100%;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .section-title span {
+        color: hsl(var(--primary));
+      }
+
+      .choose-option-list {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 64rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+
+      .choose-option-list li {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        max-width: calc(100% - 114px);
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list li {
+          gap: 3rem;
+          padding-left: 3.5rem;
+          padding-right: 3.5rem;
+          padding-top: 4rem;
+          padding-bottom: 4rem;
+        }
+      }
+
+      .choose-option-list li:nth-child(even) {
+        flex-direction: column;
+        margin-left: auto;
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list li:nth-child(even) {
+          flex-direction: row-reverse;
+          border-top-right-radius: 9999px;
+          border-bottom-right-radius: 9999px;
+        }
+      }
+
+      .choose-option-list li:nth-child(odd) {
+        flex-direction: column;
+        margin-right: auto;
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list li:nth-child(odd) {
+          flex-direction: row;
+          border-top-left-radius: 9999px;
+          border-bottom-left-radius: 9999px;
+        }
+      }
+
+      .choose-option-list li h5 {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: 700;
+        --tw-text-opacity: 1;
+        color: hsl(var(--primary) / var(--tw-text-opacity, 1));
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list li h5 {
+          font-size: 1.875rem;
+          line-height: 2.25rem;
+        }
+      }
+
+      @media (min-width: 1536px) {
+        .choose-option-list li h5 {
+          font-size: 2.25rem;
+          line-height: 2.5rem;
+        }
+      }
+
+      .choose-option-list li p {
+        max-width: 620px;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        --tw-text-opacity: 1;
+        color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list li p {
+          font-size: 1.125rem;
+          line-height: 1.75rem;
+        }
+      }
+
+      @media (min-width: 1536px) {
+        .choose-option-list li p {
+          font-size: 1.25rem;
+          line-height: 1.75rem;
+        }
+      }
+
+      .border-line {
+        position: absolute;
+        z-index: 1;
+      }
+
+      .border-line.horizontal {
+        height: 1px;
+        width: 0;
+        top: 0;
+      }
+
+      .border-line.vertical {
+        width: 1px;
+        height: 0;
+      }
+
+      li:nth-child(odd) .border-line {
+        background-color: hsl(var(--secondary));
+      }
+
+      li:nth-child(odd) .border-line.vertical {
+        left: 0;
+      }
+
+      li:nth-child(even) .border-line {
+        background-color: hsl(var(--primary));
+      }
+
+      li:nth-child(even) .border-line.vertical {
+        right: 0;
+      }
+
+      li:last-child .border-line.bottom {
+        bottom: 0;
+        top: auto;
+      }
+
+      .circle-runner {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: red;
+        top: 0;
+        transition: all 0.2s ease;
+        opacity: 0;
+        z-index: 2;
+      }
+
+      .choose-option-list li:nth-child(odd) .circle-runner {
+        right: 0;
+      }
+
+      .choose-option-list li:nth-child(even) .circle-runner {
+        left: 0;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <div class="h-96"></div>
+    <section class="regular-section">
+      <h4 class="section-title"><span>Why</span> Choose <span>Us?</span></h4>
+      <ul class="choose-option-list">
+        <li>
+          <div class="space-y-4 text-center">
+            <img src="/api/placeholder/80/80" class="mx-auto" alt="Why Us" />
+            <h5>Why Us?</h5>
+          </div>
+          <p>
+            Techfine is known for revolutionary technology in automation and
+            fastest services towards our beloved customers.
+          </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
+          <div class="circle-runner"></div>
+        </li>
+        <li>
+          <div class="space-y-4 text-center">
+            <img src="/api/placeholder/80/80" class="mx-auto" alt="Quality" />
+            <h5>Quality</h5>
+          </div>
+          <p>
+            "Quality is never a coincidence.... It is the result of sincere and
+            organized effort to deliver the best...."
+          </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
+          <div class="circle-runner"></div>
+        </li>
+        <li>
+          <div class="space-y-4 text-center">
+            <img
+              src="/api/placeholder/80/80"
+              class="mx-auto"
+              alt="Technology"
+            />
+            <h5>Technology</h5>
+          </div>
+          <p>
+            Techfine provides the best technology with the association of global
+            brands like DELTA ELECTRONICS and SIEMENS.
+          </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
+          <div class="circle-runner"></div>
+        </li>
+        <li>
+          <div class="space-y-4 text-center">
+            <img src="/api/placeholder/80/80" class="mx-auto" alt="Vision" />
+            <h5>Vision</h5>
+          </div>
+          <p>
+            Evolution through technology in jewelry-making business is
+            TECHFINE's main vision.
+          </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
+          <div class="border-line horizontal bottom"></div>
+          <div class="circle-runner"></div>
+        </li>
+      </ul>
+    </section>
+    <div class="h-96"></div>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      const listItems = document.querySelectorAll(".choose-option-list li");
+
+      listItems.forEach((li, index) => {
+        const circle = li.querySelector(".circle-runner");
+        const horizontalLine = li.querySelector(".border-line.horizontal");
+        const verticalLine = li.querySelector(".border-line.vertical");
+        const bottomLine = li.querySelector(".border-line.bottom");
+
+        // Create timeline for the animation
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: li,
+            start: "top center",
+            end: "bottom center",
+            scrub: 1,
+            onLeave: () => {
+              gsap.to([circle, horizontalLine, verticalLine, bottomLine], {
+                opacity: 0,
+                duration: 0.3,
+              });
+            },
+            onEnterBack: () => {
+              gsap.to([horizontalLine, verticalLine, bottomLine], {
+                opacity: 1,
+                duration: 0.3,
+              });
+            },
+          },
+        });
+
+        // Set initial states
+        gsap.set([circle, horizontalLine, verticalLine, bottomLine], {
+          opacity: 0,
+        });
+        gsap.set(horizontalLine, { width: 0 });
+        gsap.set(verticalLine, { height: 0 });
+        if (bottomLine) {
+          gsap.set(bottomLine, { width: 0 });
+        }
+
+        // Create the animation sequence
+        const rect = li.getBoundingClientRect();
+        if (index % 2 === 0) {
+          // Left side items
+          tl.to(circle, { opacity: 1, duration: 0.2 })
+            .to(horizontalLine, { opacity: 1, width: "100%", duration: 1 }, 0)
+            .to(circle, { x: -rect.width + 10, duration: 1 }, 0)
+            .to(verticalLine, { opacity: 1, height: "100%", duration: 1 })
+            .to(circle, { y: rect.height, duration: 1 }, "<");
+
+          // Add bottom line animation for last item
+          if (bottomLine) {
+            tl.to(bottomLine, { opacity: 1, width: "100%", duration: 1 }, ">");
+          }
+        } else {
+          // Right side items
+          tl.to(circle, { opacity: 1, duration: 0.2 })
+            .to(horizontalLine, { opacity: 1, width: "100%", duration: 1 }, 0)
+            .to(circle, { x: rect.width - 10, duration: 1 }, 0)
+            .to(verticalLine, { opacity: 1, height: "100%", duration: 1 })
+            .to(circle, { y: rect.height, duration: 1 }, "<");
+
+          // Add bottom line animation for last item
+          if (bottomLine) {
+            tl.to(bottomLine, { opacity: 1, width: "100%", duration: 1 }, ">");
+          }
+        }
+
+        // Reset on scroll out
+        tl.eventCallback("onReverseComplete", () => {
+          gsap.set([horizontalLine, verticalLine, bottomLine], {
+            width: 0,
+            height: 0,
+            opacity: 0,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Border Animation on Scroll</title>
+    <style>
+      :root {
+        --primary: 17 88% 58%;
+        --secondary: 201 97% 25%;
+        --border: 200 98% 25%;
+        --white: 0 0% 100%;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .section-title span {
+        color: hsl(var(--primary));
+      }
+
+      .choose-option-list {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 64rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+
+      .choose-option-list li {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        max-width: calc(100% - 114px);
+        border-top-width: 1px;
+        max-width: calc(100% - 114px);
+        border-style: solid;
+        --tw-border-opacity: 1;
+        border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list li {
+          gap: 3rem;
+          padding-left: 3.5rem;
+          padding-right: 3.5rem;
+          padding-top: 4rem;
+          padding-bottom: 4rem;
+        }
+      }
+
+      .choose-option-list {
+        background-image: url("../images/why-bg.png");
+      }
+
+      .choose-option-list li:nth-child(even) {
+        flex-direction: column;
+        margin-left: auto;
+        border-right-width: 1px;
+        --tw-border-opacity: 1;
+        border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
+        margin-left: auto;
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list li:nth-child(even) {
+          flex-direction: row-reverse;
+          border-top-right-radius: 9999px;
+          border-bottom-right-radius: 9999px;
+        }
+      }
+
+      .choose-option-list li:nth-child(odd) {
+        flex-direction: column;
+        border-left-width: 1px;
+        --tw-border-opacity: 1;
+        border-color: hsl(var(--secondary) / var(--tw-border-opacity, 1));
+        margin-right: auto;
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list li:nth-child(odd) {
+          flex-direction: row;
+          border-top-left-radius: 9999px;
+          border-bottom-left-radius: 9999px;
+        }
+      }
+
+      .choose-option-list li h5 {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: 700;
+        --tw-text-opacity: 1;
+        color: hsl(var(--primary) / var(--tw-text-opacity, 1));
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list li h5 {
+          font-size: 1.875rem;
+          line-height: 2.25rem;
+        }
+      }
+
+      .choose-option-list li:nth-last-child(1) {
+        border-bottom-width: 1px;
+        --tw-border-opacity: 1;
+        border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
+      }
+
+      @media (min-width: 1536px) {
+        .choose-option-list li h5 {
+          font-size: 2.25rem;
+          line-height: 2.5rem;
+        }
+      }
+
+      .choose-option-list li p {
+        max-width: 620px;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        --tw-text-opacity: 1;
+        color: hsl(var(--secondary) / var(--tw-text-opacity, 1));
+      }
+
+      @media (min-width: 768px) {
+        .choose-option-list li p {
+          font-size: 1.125rem;
+          line-height: 1.75rem;
+        }
+      }
+
+      @media (min-width: 1536px) {
+        .choose-option-list li p {
+          font-size: 1.25rem;
+          line-height: 1.75rem;
+        }
+      }
+
+      .border-line {
+        position: absolute;
+        z-index: 1;
+      }
+
+      .border-line.horizontal {
+        height: 1px;
+        width: 0;
+        top: 0;
+      }
+
+      .border-line.vertical {
+        width: 1px;
+        height: 0;
+      }
+
+      li:nth-child(odd) .border-line {
+        background-color: hsl(var(--secondary));
+      }
+
+      li:nth-child(odd) .border-line.vertical {
+        left: 0;
+      }
+
+      li:nth-child(even) .border-line {
+        background-color: hsl(var(--primary));
+      }
+
+      li:nth-child(even) .border-line.vertical {
+        right: 0;
+      }
+
+      li:last-child .border-line.bottom {
+        bottom: 0;
+        top: auto;
+      }
+
+      .circle-runner {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: red;
+        top: 0;
+        transition: all 0.2s ease;
+        opacity: 0;
+        z-index: 2;
+      }
+
+      .choose-option-list li:nth-child(odd) .circle-runner {
+        right: 0;
+      }
+
+      .choose-option-list li:nth-child(even) .circle-runner {
+        left: 0;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <div class="h-96"></div>
+    <section class="regular-section">
+      <h4 class="section-title"><span>Why</span> Choose <span>Us?</span></h4>
+      <ul class="choose-option-list">
+        <li>
+          <div class="space-y-4 text-center">
+            <img src="../assets/images/two-hand-image.png" class="mx-auto" />
+            <h5>Why Us?</h5>
+          </div>
+          <p>
+            Techfine is known for revolutionary technology in automation and
+            fastest services towards our beloved customers.
+          </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
+          <div class="circle-runner"></div>
+        </li>
+        <li>
+          <div class="space-y-4 text-center">
+            <img src="../assets/images/quality-tag.png" class="mx-auto" />
+            <h5>Quality</h5>
+          </div>
+          <p>
+            "Quality is never a coincidence.... It is the result of sincere and
+            organized effort to deliver the best...."
+          </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
+          <div class="circle-runner"></div>
+        </li>
+        <li>
+          <div class="space-y-4 text-center">
+            <img src="../assets/images/technology.png" class="mx-auto" />
+            <h5>Technology</h5>
+          </div>
+          <p>
+            Techfine provides the best technology with the association of global
+            brands like DELTA ELECTRONICS and SIEMENS.
+          </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
+          <div class="circle-runner"></div>
+        </li>
+        <li>
+          <div class="space-y-4 text-center">
+            <img src="../assets/images/vision.png" class="mx-auto" />
+            <h5>Vision</h5>
+          </div>
+          <p>
+            Evolution through technology in jewelry-making business is
+            TECHFINE's main vision.
+          </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
+          <div class="border-line horizontal bottom"></div>
+          <div class="circle-runner"></div>
+        </li>
+      </ul>
+    </section>
+    <div class="h-96"></div>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      const listItems = document.querySelectorAll(".choose-option-list li");
+
+      listItems.forEach((li, index) => {
+        const circle = li.querySelector(".circle-runner");
+        const horizontalLine = li.querySelector(".border-line.horizontal");
+        const verticalLine = li.querySelector(".border-line.vertical");
+        const bottomLine = li.querySelector(".border-line.bottom");
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: li,
+            start: "top center",
+            end: "bottom center",
+            scrub: 1,
+            onLeave: () => {
+              gsap.to([circle, horizontalLine, verticalLine, bottomLine], {
+                opacity: 0,
+                duration: 0.3,
+              });
+            },
+            onEnterBack: () => {
+              gsap.to([horizontalLine, verticalLine, bottomLine], {
+                opacity: 1,
+                duration: 0.3,
+              });
+            },
+          },
+        });
+
+        gsap.set([circle, horizontalLine, verticalLine, bottomLine], {
+          opacity: 0,
+        });
+        gsap.set(horizontalLine, { width: 0 });
+        gsap.set(verticalLine, { height: 0 });
+        if (bottomLine) {
+          gsap.set(bottomLine, { width: 0 });
+        }
+
+        const rect = li.getBoundingClientRect();
+        if (index % 2 === 0) {
+          tl.to(circle, { opacity: 1, duration: 0.2 })
+            .to(horizontalLine, { opacity: 1, width: "100%", duration: 1 }, 0)
+            .to(circle, { x: -rect.width + 10, duration: 1 }, 0)
+            .to(verticalLine, { opacity: 1, height: "100%", duration: 1 })
+            .to(circle, { y: rect.height, duration: 1 }, "<");
+
+          if (bottomLine) {
+            tl.to(bottomLine, { opacity: 1, width: "100%", duration: 1 }, ">");
+          }
+        } else {
+          tl.to(circle, { opacity: 1, duration: 0.2 })
+            .to(horizontalLine, { opacity: 1, width: "100%", duration: 1 }, 0)
+            .to(circle, { x: rect.width - 10, duration: 1 }, 0)
+            .to(verticalLine, { opacity: 1, height: "100%", duration: 1 })
+            .to(circle, { y: rect.height, duration: 1 }, "<");
+
+          if (bottomLine) {
+            tl.to(bottomLine, { opacity: 1, width: "100%", duration: 1 }, ">");
+          }
+        }
+
+        tl.eventCallback("onReverseComplete", () => {
+          gsap.set([horizontalLine, verticalLine, bottomLine], {
+            width: 0,
+            height: 0,
+            opacity: 0,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

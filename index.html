@@ -13,12 +13,21 @@
         --white: 0 0% 100%;
       }
 
+      .section-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .section-title span {
+        color: hsl(var(--primary));
+      }
+
       .choose-option-list {
         margin-left: auto;
         margin-right: auto;
         width: 100%;
         max-width: 64rem;
-        /* overflow: hidden; */
         background-position: center;
         background-repeat: no-repeat;
         padding-left: 1rem;
@@ -32,16 +41,12 @@
         }
       }
 
-      .choose-option-list {
-        background-image: url("../images/why-bg.png");
-      }
-
       .choose-option-list li {
         position: relative;
         display: flex;
         align-items: center;
         gap: 1.5rem;
-        /* overflow: hidden; */
+        max-width: calc(100% - 114px);
         border-top-width: 1px;
         max-width: calc(100% - 114px);
         border-style: solid;
@@ -63,8 +68,13 @@
         }
       }
 
+      .choose-option-list {
+        background-image: url("../images/why-bg.png");
+      }
+
       .choose-option-list li:nth-child(even) {
         flex-direction: column;
+        margin-left: auto;
         border-right-width: 1px;
         --tw-border-opacity: 1;
         border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
@@ -95,12 +105,6 @@
         }
       }
 
-      .choose-option-list li:nth-last-child(1) {
-        border-bottom-width: 1px;
-        --tw-border-opacity: 1;
-        border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
-      }
-
       .choose-option-list li h5 {
         font-size: 1.25rem;
         line-height: 1.75rem;
@@ -114,6 +118,12 @@
           font-size: 1.875rem;
           line-height: 2.25rem;
         }
+      }
+
+      .choose-option-list li:nth-last-child(1) {
+        border-bottom-width: 1px;
+        --tw-border-opacity: 1;
+        border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
       }
 
       @media (min-width: 1536px) {
@@ -145,7 +155,43 @@
         }
       }
 
-      /* Circle SVG Animation */
+      .border-line {
+        position: absolute;
+        z-index: 1;
+      }
+
+      .border-line.horizontal {
+        height: 1px;
+        width: 0;
+        top: 0;
+      }
+
+      .border-line.vertical {
+        width: 1px;
+        height: 0;
+      }
+
+      li:nth-child(odd) .border-line {
+        background-color: hsl(var(--secondary));
+      }
+
+      li:nth-child(odd) .border-line.vertical {
+        left: 0;
+      }
+
+      li:nth-child(even) .border-line {
+        background-color: hsl(var(--primary));
+      }
+
+      li:nth-child(even) .border-line.vertical {
+        right: 0;
+      }
+
+      li:last-child .border-line.bottom {
+        bottom: 0;
+        top: auto;
+      }
+
       .circle-runner {
         position: absolute;
         width: 20px;
@@ -155,6 +201,7 @@
         top: 0;
         transition: all 0.2s ease;
         opacity: 0;
+        z-index: 2;
       }
 
       .choose-option-list li:nth-child(odd) .circle-runner {
@@ -183,6 +230,8 @@
             Techfine is known for revolutionary technology in automation and
             fastest services towards our beloved customers.
           </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
           <div class="circle-runner"></div>
         </li>
         <li>
@@ -194,6 +243,8 @@
             "Quality is never a coincidence.... It is the result of sincere and
             organized effort to deliver the best...."
           </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
           <div class="circle-runner"></div>
         </li>
         <li>
@@ -205,6 +256,8 @@
             Techfine provides the best technology with the association of global
             brands like DELTA ELECTRONICS and SIEMENS.
           </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
           <div class="circle-runner"></div>
         </li>
         <li>
@@ -216,6 +269,9 @@
             Evolution through technology in jewelry-making business is
             TECHFINE's main vision.
           </p>
+          <div class="border-line horizontal"></div>
+          <div class="border-line vertical"></div>
+          <div class="border-line horizontal bottom"></div>
           <div class="circle-runner"></div>
         </li>
       </ul>
@@ -226,54 +282,72 @@
       gsap.registerPlugin(ScrollTrigger);
 
       const listItems = document.querySelectorAll(".choose-option-list li");
-      const circles = document.querySelectorAll(".circle-runner");
-
-      const positions = Array.from(listItems).map((li) => {
-        const rect = li.getBoundingClientRect();
-        return {
-          width: rect.width,
-          left: rect.left,
-          top: rect.top,
-          height: rect.height,
-        };
-      });
 
       listItems.forEach((li, index) => {
-        const circle = circles[index];
+        const circle = li.querySelector(".circle-runner");
+        const horizontalLine = li.querySelector(".border-line.horizontal");
+        const verticalLine = li.querySelector(".border-line.vertical");
+        const bottomLine = li.querySelector(".border-line.bottom");
 
-        gsap.set(circle, { opacity: 0 });
-
-        gsap.to(circle, {
+        const tl = gsap.timeline({
           scrollTrigger: {
             trigger: li,
             start: "top center",
             end: "bottom center",
-            scrub: 0.5,
-            markers: true,
-            onEnter: () => {
-              gsap.to(circle, {
-                opacity: 1,
-                x:
-                  index % 2 === 0
-                    ? -positions[index].width + 10
-                    : positions[index].width - 10,
-                y: 0,
-                ease: "none",
-                onComplete: () => {
-                  gsap.to(circle, {
-                    y: positions[index].height,
-                    ease: "none",
-                    duration: 1,
-                  });
-                },
+            scrub: 1,
+            onLeave: () => {
+              gsap.to([circle, horizontalLine, verticalLine, bottomLine], {
+                opacity: 0,
+                duration: 0.3,
               });
             },
-            onLeave: () => {
-              gsap.to(circle, {
-                opacity: 0,
+            onEnterBack: () => {
+              gsap.to([horizontalLine, verticalLine, bottomLine], {
+                opacity: 1,
+                duration: 0.3,
               });
             },
           },
+        });
+
+        gsap.set([circle, horizontalLine, verticalLine, bottomLine], {
+          opacity: 0,
+        });
+        gsap.set(horizontalLine, { width: 0 });
+        gsap.set(verticalLine, { height: 0 });
+        if (bottomLine) {
+          gsap.set(bottomLine, { width: 0 });
+        }
+
+        const rect = li.getBoundingClientRect();
+        if (index % 2 === 0) {
+          tl.to(circle, { opacity: 1, duration: 0.2 })
+            .to(horizontalLine, { opacity: 1, width: "100%", duration: 1 }, 0)
+            .to(circle, { x: -rect.width + 10, duration: 1 }, 0)
+            .to(verticalLine, { opacity: 1, height: "100%", duration: 1 })
+            .to(circle, { y: rect.height, duration: 1 }, "<");
+
+          if (bottomLine) {
+            tl.to(bottomLine, { opacity: 1, width: "100%", duration: 1 }, ">");
+          }
+        } else {
+          tl.to(circle, { opacity: 1, duration: 0.2 })
+            .to(horizontalLine, { opacity: 1, width: "100%", duration: 1 }, 0)
+            .to(circle, { x: rect.width - 10, duration: 1 }, 0)
+            .to(verticalLine, { opacity: 1, height: "100%", duration: 1 })
+            .to(circle, { y: rect.height, duration: 1 }, "<");
+
+          if (bottomLine) {
+            tl.to(bottomLine, { opacity: 1, width: "100%", duration: 1 }, ">");
+          }
+        }
+
+        tl.eventCallback("onReverseComplete", () => {
+          gsap.set([horizontalLine, verticalLine, bottomLine], {
+            width: 0,
+            height: 0,
+            opacity: 0,
+          });
         });
       });
     </script>
