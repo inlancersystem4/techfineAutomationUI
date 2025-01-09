@@ -18,7 +18,7 @@
         margin-right: auto;
         width: 100%;
         max-width: 64rem;
-        overflow: hidden;
+        /* overflow: hidden; */
         background-position: center;
         background-repeat: no-repeat;
         padding-left: 1rem;
@@ -41,8 +41,8 @@
         display: flex;
         align-items: center;
         gap: 1.5rem;
-        overflow: hidden;
-        border-top-width: 0px;
+        /* overflow: hidden; */
+        border-top-width: 1px;
         border-style: solid;
         --tw-border-opacity: 1;
         border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
@@ -141,12 +141,32 @@
           line-height: 1.75rem;
         }
       }
+
+      /* Circle SVG Animation */
+      .circle-runner {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: red;
+        top: 0;
+        transition: all 0.2s ease;
+      }
+
+      .choose-option-list li:nth-child(odd) .circle-runner {
+        right: 0;
+      }
+
+      .choose-option-list li:nth-child(even) .circle-runner {
+        left: 0;
+      }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
   </head>
   <body>
+    <div class="h-56"></div>
     <section class="regular-section">
       <h4 class="section-title"><span>Why</span> Choose <span>Us?</span></h4>
       <ul class="choose-option-list">
@@ -159,6 +179,7 @@
             Techfine is known for revolutionary technology in automation and
             fastest services towards our beloved customers.
           </p>
+          <div class="circle-runner"></div>
         </li>
         <li>
           <div class="space-y-4 text-center">
@@ -169,6 +190,7 @@
             "Quality is never a coincidence.... It is the result of sincere and
             organized effort to deliver the best...."
           </p>
+          <div class="circle-runner"></div>
         </li>
         <li>
           <div class="space-y-4 text-center">
@@ -179,6 +201,7 @@
             Techfine provides the best technology with the association of global
             brands like DELTA ELECTRONICS and SIEMENS.
           </p>
+          <div class="circle-runner"></div>
         </li>
         <li>
           <div class="space-y-4 text-center">
@@ -189,69 +212,72 @@
             Evolution through technology in jewelry-making business is
             TECHFINE's main vision.
           </p>
+          <div class="circle-runner"></div>
         </li>
       </ul>
     </section>
+    <div class="h-96"></div>
 
-    <script src="./assets/scripts/main.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Register GSAP plugins
-        gsap.registerPlugin(ScrollTrigger);
+      gsap.registerPlugin(ScrollTrigger);
 
-        // Select all list items
-        const listItems = document.querySelectorAll(".choose-option-list li");
+      const listItems = document.querySelectorAll(".choose-option-list li");
+      const circles = document.querySelectorAll(".circle-runner");
 
-        // Apply animation to each list item
-        listItems.forEach((item, index) => {
-          const borderColor =
-            getComputedStyle(item).getPropertyValue("--primary") ||
-            "hsl(220, 90%, 50%)";
+      const positions = Array.from(listItems).map((li) => {
+        const rect = li.getBoundingClientRect();
+        return {
+          width: rect.width,
+          left: rect.left,
+          top: rect.top,
+          height: rect.height,
+        };
+      });
 
-          // Create the animation
-          gsap.fromTo(
-            item,
-            {
-              borderTopWidth: "0px", // Start with no border
-              opacity: 0.5, // Slightly faded at the beginning
-              scale: 0.95, // Slight zoom-out effect
-            },
-            {
-              borderTopWidth: "5px", // Animate border width
-              opacity: 1, // Full opacity
-              scale: 1, // Zoom back to original size
-              duration: 1.5, // Duration of the effect
-              ease: "power2.out", // Smooth easing
-              borderColor, // Dynamic border color
-              scrollTrigger: {
-                trigger: item,
-                start: "top 85%", // Start near the viewport
-                end: "top 10%", // Ends as it scrolls out
-                scrub: true, // Smooth scroll animation
-                toggleActions: "play none none reverse", // Reverse on scroll up
-              },
+      listItems.forEach((li, index) => {
+        const circle = circles[index];
+
+        gsap.to(circle, {
+          scrollTrigger: {
+            trigger: li,
+            start: "top center",
+            end: "bottom center",
+            scrub: 1,
+            markers: true, // Turn off markers for production
+          },
+          x: index % 2 === 0 ? -positions[index].width : positions[index].width,
+          ease: "none",
+          onUpdate: () => {
+            // As the circle moves horizontally, adjust the border-radius of the `li`
+            if (index % 2 === 0) {
+              // For even items (right side), adjust the right corners
+              gsap.to(li, {
+                borderTopRightRadius: `${Math.min(circle.x + 20, 9999)}px`,
+                borderBottomRightRadius: `${Math.min(circle.x + 20, 9999)}px`,
+              });
+            } else {
+              // For odd items (left side), adjust the left corners
+              gsap.to(li, {
+                borderTopLeftRadius: `${Math.min(circle.x + 20, 9999)}px`,
+                borderBottomLeftRadius: `${Math.min(circle.x + 20, 9999)}px`,
+              });
             }
-          );
+          },
+          onComplete: () => {
+            // Once the x movement is complete, animate the y movement
+            gsap.to(circle, {
+              y: positions[index].height, // Move the circle vertically down
+              ease: "none",
+              duration: 1, // Vertical movement duration
+            });
 
-          // Add a subtle stagger effect
-          gsap.fromTo(
-            item,
-            {
-              x: index % 2 === 0 ? -20 : 20, // Slide left or right alternately
-              opacity: 0,
-            },
-            {
-              x: 0, // Reset position
-              opacity: 1, // Fade in
-              duration: 1.2,
-              ease: "power1.out",
-              scrollTrigger: {
-                trigger: item,
-                start: "top 95%",
-                toggleActions: "play none none reverse",
-              },
-            }
-          );
+            // Animate the border-radius of the li element during the y movement
+            gsap.to(li, {
+              borderBottomLeftRadius: "9999px", // Apply border-radius to bottom-left corner
+              borderBottomRightRadius: "9999px", // Apply border-radius to bottom-right corner
+              duration: 1, // Duration of the border-radius animation
+            });
+          },
         });
       });
     </script>
