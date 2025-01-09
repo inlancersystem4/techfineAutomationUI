@@ -43,6 +43,7 @@
         gap: 1.5rem;
         /* overflow: hidden; */
         border-top-width: 1px;
+        max-width: calc(100% - 114px);
         border-style: solid;
         --tw-border-opacity: 1;
         border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
@@ -67,6 +68,7 @@
         border-right-width: 1px;
         --tw-border-opacity: 1;
         border-color: hsl(var(--primary) / var(--tw-border-opacity, 1));
+        margin-left: auto;
       }
 
       @media (min-width: 768px) {
@@ -82,6 +84,7 @@
         border-left-width: 1px;
         --tw-border-opacity: 1;
         border-color: hsl(var(--secondary) / var(--tw-border-opacity, 1));
+        margin-right: auto;
       }
 
       @media (min-width: 768px) {
@@ -151,6 +154,7 @@
         background-color: red;
         top: 0;
         transition: all 0.2s ease;
+        opacity: 0;
       }
 
       .choose-option-list li:nth-child(odd) .circle-runner {
@@ -166,7 +170,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
   </head>
   <body>
-    <div class="h-56"></div>
+    <div class="h-96"></div>
     <section class="regular-section">
       <h4 class="section-title"><span>Why</span> Choose <span>Us?</span></h4>
       <ul class="choose-option-list">
@@ -237,46 +241,38 @@
       listItems.forEach((li, index) => {
         const circle = circles[index];
 
+        gsap.set(circle, { opacity: 0 });
+
         gsap.to(circle, {
           scrollTrigger: {
             trigger: li,
             start: "top center",
             end: "bottom center",
-            scrub: 1,
-            markers: true, // Turn off markers for production
-          },
-          x: index % 2 === 0 ? -positions[index].width : positions[index].width,
-          ease: "none",
-          onUpdate: () => {
-            // As the circle moves horizontally, adjust the border-radius of the `li`
-            if (index % 2 === 0) {
-              // For even items (right side), adjust the right corners
-              gsap.to(li, {
-                borderTopRightRadius: `${Math.min(circle.x + 20, 9999)}px`,
-                borderBottomRightRadius: `${Math.min(circle.x + 20, 9999)}px`,
+            scrub: 0.5,
+            markers: true,
+            onEnter: () => {
+              gsap.to(circle, {
+                opacity: 1,
+                x:
+                  index % 2 === 0
+                    ? -positions[index].width + 10
+                    : positions[index].width - 10,
+                y: 0,
+                ease: "none",
+                onComplete: () => {
+                  gsap.to(circle, {
+                    y: positions[index].height,
+                    ease: "none",
+                    duration: 1,
+                  });
+                },
               });
-            } else {
-              // For odd items (left side), adjust the left corners
-              gsap.to(li, {
-                borderTopLeftRadius: `${Math.min(circle.x + 20, 9999)}px`,
-                borderBottomLeftRadius: `${Math.min(circle.x + 20, 9999)}px`,
+            },
+            onLeave: () => {
+              gsap.to(circle, {
+                opacity: 0,
               });
-            }
-          },
-          onComplete: () => {
-            // Once the x movement is complete, animate the y movement
-            gsap.to(circle, {
-              y: positions[index].height, // Move the circle vertically down
-              ease: "none",
-              duration: 1, // Vertical movement duration
-            });
-
-            // Animate the border-radius of the li element during the y movement
-            gsap.to(li, {
-              borderBottomLeftRadius: "9999px", // Apply border-radius to bottom-left corner
-              borderBottomRightRadius: "9999px", // Apply border-radius to bottom-right corner
-              duration: 1, // Duration of the border-radius animation
-            });
+            },
           },
         });
       });
